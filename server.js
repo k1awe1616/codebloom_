@@ -8,7 +8,6 @@ dotenv.config(); // must come before process.env usage
 
 const app = express(); // ← MUST add this
 
-const cors = require("cors");
 app.use(cors({
   origin: "https://frontend-codebloom1.onrender.com",  // your frontend URL
   methods: ["GET", "POST", "PUT", "DELETE"],
