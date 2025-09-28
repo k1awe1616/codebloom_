@@ -9,16 +9,16 @@ function goToNextQuestion(currentId, nextId) {
 let elapsedTime = 0;
 const timerDisplay = document.getElementById("time");
 
+// Backend URL (replace with your actual Render backend URL)
+const backendUrl = "https://your-backend.onrender.com/api/save_result";
 
 // Helper to highlight answers
 function markAnswer(button, isCorrect, currentId, nextId) {
   const skipQuestions = ["question11", "question12", "question13", "question14", "question15"];
+  
   if (skipQuestions.includes(currentId)) {
     if (isCorrect) {
       correctCount++;
-      
-    } else {
-      //do nothing
     }
   } else {
     if (isCorrect) {
@@ -28,53 +28,54 @@ function markAnswer(button, isCorrect, currentId, nextId) {
       button.classList.add("wrong");
     }
   }
+
   setTimeout(() => {
     goToNextQuestion(currentId, nextId);
-    console.log(correctCount);
-    console.log(nextId)
-    if (nextId == 'passed') {
+    console.log("Correct count:", correctCount);
+    console.log("Next question:", nextId);
+
+    if (nextId === 'passed') {
       const username = localStorage.getItem("username");
-      console.log(correctCount);
-      console.log(username);
-      fetch("/api/save_result", {
+      console.log("Saving result for user:", username);
+
+      fetch(backendUrl, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
-          username:username,
+          username: username,
           language: "sql",
           score: correctCount,
-          time: elapsedTime  // 👈 send raw correct answers
+          time: elapsedTime
         })
       })
-        .then(res => res.json())
-        .then(data => console.log("Result saved:", data))
-        .catch(err => console.log("Error saving result:", err));
+      .then(res => res.json())
+      .then(data => console.log("Result saved:", data))
+      .catch(err => console.error("Error saving result:", err));
     }
   }, 800);
 }
 
-
-// Correct answers Q1–Q10
+// ==================== CORRECT ANSWERS Q1–Q10 ====================
 for (let i = 1; i <= 10; i++) {
-  let btn = document.getElementById("answer" + i);
+  const btn = document.getElementById("answer" + i);
   if (btn) {
-    let currentQ = "question" + i;
-    let nextQ = i === 10 ? "question11" : "question" + (i + 1);
+    const currentQ = "question" + i;
+    const nextQ = i === 10 ? "question11" : "question" + (i + 1);
     btn.addEventListener("click", () => markAnswer(btn, true, currentQ, nextQ));
   }
 }
 
-// Wrong answers
-let wrongBtns = document.querySelectorAll("input[id^='wrong']");
+// ==================== WRONG ANSWERS ====================
+const wrongBtns = document.querySelectorAll("input[id^='wrong']");
 wrongBtns.forEach(btn => {
   btn.addEventListener("click", function() {
-    let currentQ = this.closest(".question").id;
-    let nextQ = "question" + (parseInt(currentQ.replace("question", "")) + 1);
+    const currentQ = this.closest(".question").id;
+    const nextQ = "question" + (parseInt(currentQ.replace("question", "")) + 1);
     markAnswer(this, false, currentQ, nextQ);
   });
 });
 
-// Debugging Challenges (3 attempts rule)
+// ==================== DEBUGGING CHALLENGES ====================
 let attempts = {};
 
 // Function to check text answers with max 3 tries
@@ -83,10 +84,7 @@ function checkTextAnswer(inputId, correctAnswer, currentId, nextId) {
   const feedback = document.getElementById("feedback" + inputId.replace("input", ""));
   const correct = correctAnswer.toLowerCase();
 
-  // Initialize attempts counter if not set
-  if (!attempts[inputId]) {
-    attempts[inputId] = 0;
-  }
+  if (!attempts[inputId]) attempts[inputId] = 0;
 
   if (userAnswer.includes(correct)) {
     feedback.textContent = "✅ Correct! Moving on...✅";
@@ -109,7 +107,7 @@ function checkTextAnswer(inputId, correctAnswer, currentId, nextId) {
     } else if (attempts[inputId] >= 3) {
       feedback.textContent = "❌ Wrong 3 times! Moving on to the next question...";
       feedback.style.color = "orange";
-      attempts[inputId] = 0; // reset for the next question
+      attempts[inputId] = 0;
       setTimeout(() => {
         document.getElementById(currentId).style.display = "none";
         document.getElementById(nextId).style.display = "block";
@@ -119,10 +117,8 @@ function checkTextAnswer(inputId, correctAnswer, currentId, nextId) {
   }
 }
 
-
+// ==================== TIMER ====================
 const timer = setInterval(() => {
   elapsedTime++;
   timerDisplay.textContent = elapsedTime;
 }, 1000);
-
-

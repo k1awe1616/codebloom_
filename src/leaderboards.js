@@ -1,26 +1,13 @@
-// Sample leaderboard data
-// Fetch registered accounts from backend
-async function getAccounts() {
-  try {
-    const res = await fetch("/api/accounts");
-    const data = await res.json();
-    return data; // Array of { fullname }
-  } catch (err) {
-    console.error("Error fetching accounts:", err);
-    return [];
-  }
-}
+const API_BASE = "https://codebloom-thesis.onrender.com"; // Render backend URL
+
 // Load leaderboard for a specific language
 async function loadLeaderboard(language = "html") {
   const tbody = document.getElementById("leaderboard-body");
-  const fragment = document.createDocumentFragment();
-
-  // Clear old rows
-  tbody.innerHTML = "";
+  tbody.innerHTML = ""; // Clear old rows
 
   try {
-    // Call your backend API
-    const res = await fetch(`/api/leaderboard/${language}`);
+    // Call backend API
+    const res = await fetch(`${API_BASE}/api/leaderboard/${language}`);
     const data = await res.json(); // Array of { name, score, time }
 
     data.forEach((student, index) => {
@@ -31,12 +18,13 @@ async function loadLeaderboard(language = "html") {
         <td>${student.score}</td>
         <td>${student.time} sec</td>
       `;
-      fragment.appendChild(row);
+      tbody.appendChild(row);
     });
-
-    tbody.appendChild(fragment);
   } catch (err) {
     console.error("Error loading leaderboard:", err);
+    const row = document.createElement("tr");
+    row.innerHTML = `<td colspan="4" style="color:red;">Failed to load leaderboard</td>`;
+    tbody.appendChild(row);
   }
 }
 

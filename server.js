@@ -63,13 +63,14 @@ app.post('/', async (req, res) => {
 
         if (user) {
             console.log("Login successful:", user.username);
-            return res.redirect(`https://frontend-codebloom1.onrender.com/Menu.html?username=${encodeURIComponent(user.username)}`);
+            // Instead of redirect:
+            return res.json({ success: true, username: user.username });
         } else {
-            return res.redirect('https://frontend-codebloom1.onrender.com/index.html?error=1');
+            return res.status(401).json({ success: false, message: "Invalid username or password" });
         }
     } catch (err) {
         console.error("Login error:", err);
-        return res.redirect('https://frontend-codebloom1.onrender.com/index.html?error=1');
+        return res.status(500).json({ success: false, message: "Server error" });
     }
 });
 

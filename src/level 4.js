@@ -4,11 +4,10 @@ function goToNextQuestion(currentQuestionId, nextQuestionId) {
   document.getElementById(currentQuestionId).style.display = "none";
   document.getElementById(nextQuestionId).style.display = "block";
 }
+
 // Stopwatch Timer (continuous)
 let elapsedTime = 0;
 const timerDisplay = document.getElementById("time");
-
-// Mark answer with border color
 
 // Helper to highlight answers
 function markAnswer(button, isCorrect, currentId, nextId) {
@@ -16,9 +15,6 @@ function markAnswer(button, isCorrect, currentId, nextId) {
   if (skipQuestions.includes(currentId)) {
     if (isCorrect) {
       correctCount++;
-      
-    } else {
-      //do nothing
     }
   } else {
     if (isCorrect) {
@@ -28,32 +24,38 @@ function markAnswer(button, isCorrect, currentId, nextId) {
       button.classList.add("wrong");
     }
   }
+
   setTimeout(() => {
     goToNextQuestion(currentId, nextId);
     console.log(correctCount);
-    console.log(nextId)
+    console.log(nextId);
+
     if (nextId == 'passed') {
       const username = localStorage.getItem("username");
       console.log(correctCount);
       console.log(username);
-      fetch("/api/save_result", {
+
+      // 👇 Replace with your Render backend URL
+      const backendUrl = "https://your-backend.onrender.com/api/save_result";
+
+      fetch(backendUrl, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
-          username:username,
+          username: username,
           language: "cpp",
           score: correctCount,
-          time: elapsedTime  // 👈 send raw correct answers
+          time: elapsedTime
         })
       })
-        .then(res => res.json())
-        .then(data => console.log("Result saved:", data))
-        .catch(err => console.log("Error saving result:", err));
+      .then(res => res.json())
+      .then(data => console.log("Result saved:", data))
+      .catch(err => console.log("Error saving result:", err));
     }
   }, 800);
 }
 
-// Correct answers
+// ✅ Correct answers
 document.getElementById("answer1").onclick = () => markAnswer(document.getElementById("answer1"), true, "question1", "question2");
 document.getElementById("answer2").onclick = () => markAnswer(document.getElementById("answer2"), true, "question2", "question3");
 document.getElementById("answer3").onclick = () => markAnswer(document.getElementById("answer3"), true, "question3", "question4");
@@ -65,7 +67,7 @@ document.getElementById("answer8").onclick = () => markAnswer(document.getElemen
 document.getElementById("answer9").onclick = () => markAnswer(document.getElementById("answer9"), true, "question9", "question10");
 document.getElementById("answer10").onclick = () => markAnswer(document.getElementById("answer10"), true, "question10", "question11");
 
-// Wrong answers (select all inputs with id starting with 'wrong')
+// ❌ Wrong answers
 let wrongBtns = document.querySelectorAll("input[id^='wrong']");
 wrongBtns.forEach(btn => {
   btn.addEventListener("click", function() {
@@ -75,26 +77,20 @@ wrongBtns.forEach(btn => {
   });
 });
 
-
 // Text-based Debugging (3 tries rule)
 let attempts = {};
 
-
-// Function to check text answers with max 3 tries
 function checkTextAnswer(inputId, correctAnswer, currentId, nextId) {
   const userAnswer = document.getElementById(inputId).value.trim().toLowerCase();
   const feedback = document.getElementById("feedback" + inputId.replace("input", ""));
   const correct = correctAnswer.toLowerCase();
 
-  // Initialize attempts counter if not set
-  if (!attempts[inputId]) {
-    attempts[inputId] = 0;
-  }
+  if (!attempts[inputId]) attempts[inputId] = 0;
 
   if (userAnswer.includes(correct)) {
     feedback.textContent = "✅ Correct! Moving on...✅";
     feedback.style.color = "white";
-    attempts[inputId] = 0; // reset counter if correct
+    attempts[inputId] = 0;
     setTimeout(() => {
       document.getElementById(currentId).style.display = "none";
       document.getElementById(nextId).style.display = "block";
@@ -102,7 +98,6 @@ function checkTextAnswer(inputId, correctAnswer, currentId, nextId) {
     markAnswer(this, true, currentId, nextId);
   } else {
     attempts[inputId]++;
-
     if (attempts[inputId] === 1) {
       feedback.textContent = "❌ Wrong! You have 2 more attempts.";
       feedback.style.color = "red";
@@ -112,7 +107,7 @@ function checkTextAnswer(inputId, correctAnswer, currentId, nextId) {
     } else if (attempts[inputId] >= 3) {
       feedback.textContent = "❌ Wrong 3 times! Moving on to the next question...";
       feedback.style.color = "orange";
-      attempts[inputId] = 0; // reset for the next question
+      attempts[inputId] = 0;
       setTimeout(() => {
         document.getElementById(currentId).style.display = "none";
         document.getElementById(nextId).style.display = "block";
@@ -122,10 +117,7 @@ function checkTextAnswer(inputId, correctAnswer, currentId, nextId) {
   }
 }
 
-
 const timer = setInterval(() => {
   elapsedTime++;
   timerDisplay.textContent = elapsedTime;
 }, 1000);
-
-

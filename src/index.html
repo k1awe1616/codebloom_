@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+
   <meta charset="UTF-8">
   <title>Codebloom</title>
   <link rel="stylesheet" href="./capsstyle.css">
@@ -33,16 +35,41 @@
 </form>
 
 <script>
-  // Check if ?error=1 exists in URL
-    const params = new URLSearchParams(window.location.search);
-    if (params.get("error") === "1") {
-      document.getElementById("error-message").style.display = "block";
-    } else {
-      const username = document.getElementById("username").value;
-      localStorage.setItem("username", username);
+const form = document.querySelector('form');
 
+form.addEventListener('submit', async (e) => {
+  e.preventDefault(); // Stop default form submission
+
+  const username = document.getElementById('username').value;
+  const password = document.getElementById('password').value;
+
+  const loading = document.getElementById('loading');
+  const errorMsg = document.getElementById('error-message');
+  loading.style.display = 'block';
+  errorMsg.style.display = 'none';
+
+  fetch("https://codebloom-thesis.onrender.com/", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ username, password })
+})
+.then(res => res.json())
+.then(data => {
+    if (data.success) {
+        // Redirect manually to frontend Menu page
+        window.location.href = `/Menu.html?username=${encodeURIComponent(data.username)}`;
+    } else {
+        alert("Login failed: " + data.message);
     }
-     
+})
+.catch(err => {
+    console.error("Login failed:", err);
+    alert("Error connecting to server");
+});
+
+  
+});
 </script>
+
 </body>
 </html>

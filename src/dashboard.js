@@ -6,21 +6,29 @@ const namesBtn = document.getElementById("namesBtn");
 async function getStudents() {
     try {
         const res = await fetch("/api/accounts");
-        const data = await res.json();
-        return data;
+        return await res.json();
     } catch (err) {
         console.error("Error fetching students:", err);
+        contentDiv.innerHTML = `<p class="loading">Failed to fetch student names.</p>`;
         return [];
     }
 }
-//NEWNEWNEWNEW
+
+// Render Student Scores
 async function renderScores() {
     scoresBtn.classList.add("active");
     namesBtn.classList.remove("active");
 
+    contentDiv.innerHTML = `<p class="loading">Loading scores...</p>`;
+
     try {
         const res = await fetch("/api/overall-scores");
         const students = await res.json();
+
+        if (!students.length) {
+            contentDiv.innerHTML = `<p class="loading">No student data available.</p>`;
+            return;
+        }
 
         let tableHtml = `
             <h2>Student Scores</h2>
@@ -38,34 +46,26 @@ async function renderScores() {
         `;
 
         students.forEach(student => {
-            // Collect languages where score < 6
             let areas = [];
             if (student.scores) {
                 for (const [lang, score] of Object.entries(student.scores)) {
-                    if (score < 6) {
-                        areas.push(lang.toUpperCase());
-                    }
+                    if (score < 6) areas.push(lang.toUpperCase());
                 }
             }
 
-            // Determine programming skill level
             let skillLevel = "";
-            if (student.totalScore < 50) {
-                skillLevel = "BASIC";
-            } else if (student.totalScore >= 51 && student.totalScore <= 70) {
-                skillLevel = "MODERATE";
-            } else if (student.totalScore >= 71 && student.totalScore <= 105) {
-                skillLevel = "ADVANCE";
-            } else {
-                skillLevel = "EXPERT"; // optional fallback if higher than 105
-            }
+            const score = student.totalScore || 0;
+            if (score < 50) skillLevel = "BASIC";
+            else if (score <= 70) skillLevel = "MODERATE";
+            else if (score <= 105) skillLevel = "ADVANCE";
+            else skillLevel = "EXPERT";
 
             tableHtml += `
                 <tr>
                     <td>${student.name}</td>
-                    <td>${student.totalScore}</td>
-                    <td>${student.totalScore >= 50 ? "Pass" : "Fail"}</td>
-                    <td>${areas.length > 0 ? areas.join(", ") : "None"}</td>
+                    <td>${score}</td>
+                    <td>${score >= 50 ? "Pass" : "Fail"}</td>
+                    <td>${areas.length ? areas.join(", ") : "None"}</td>
                     <td>${skillLevel}</td>
                 </tr>
             `;
@@ -73,23 +73,28 @@ async function renderScores() {
 
         tableHtml += `</tbody></table>`;
         contentDiv.innerHTML = tableHtml;
+
     } catch (err) {
         console.error("Error loading scores:", err);
+        contentDiv.innerHTML = `<p class="loading">Error loading student scores.</p>`;
     }
 }
 
-
-
+// Render Student Names
 async function renderNames() {
     namesBtn.classList.add("active");
     scoresBtn.classList.remove("active");
 
+    contentDiv.innerHTML = `<p class="loading">Loading student names...</p>`;
     const students = await getStudents();
 
+    if (!students.length) {
+        contentDiv.innerHTML = `<p class="loading">No student names found.</p>`;
+        return;
+    }
+
     let listHtml = `<h2>Student Names</h2><ul>`;
-    students.forEach(student => {
-        listHtml += `<li>${student.fullname}</li>`;
-    });
+    students.forEach(student => listHtml += `<li>${student.fullname}</li>`);
     listHtml += `</ul>`;
     contentDiv.innerHTML = listHtml;
 }

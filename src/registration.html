@@ -1,41 +1,84 @@
 <!DOCTYPE html>
-<html lang="en" >
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <title>CAPSTONE</title>
   <link rel="stylesheet" href="./registrationstyle.css">
-
 </head>
 <body>
-<!-- partial:registration.partial.html -->
- <h1>REGISTER YOUR ACCOUNT HERE.</h1>
- <form action="" method="post">
-<div class="box">
-    
-  <div class="login">
-    <div class="loginBx">
-      <h2>
-        Sign UP
-      </h2>
-      <input id="fullname" name="fullname" type="text" placeholder="Enter Full name">
-      <input id="username" name="username" type="text" placeholder="Enter Username">
-      <input id="ID" name="ID" type="text" placeholder="Enter TUP-ID ">
-      <input id="bday" name="bday" type="text" type="text" placeholder="Enter Birthday ">
-      <input id="password" name="password" type="password" type="password" placeholder="Password">
-      <select id="SOT" name="SOT" type="text" type="text">
-        <option>Student</option>
-        <option>Teacher</option>
-      </select>
-      <input type="submit" value="Register" />
-      <div class="group">
-        <a href="index.html">Have an account already?</a>
-        <a href="index.html">Go back</a>
+  <h1>REGISTER YOUR ACCOUNT HERE.</h1>
+  <form id="registrationForm">
+    <div class="box">
+      <div class="login">
+        <div class="loginBx">
+          <h2>Sign UP</h2>
+          <input id="fullname" name="fullname" type="text" placeholder="Enter Full name" required>
+          <input id="username" name="username" type="text" placeholder="Enter Username" required>
+          <input id="ID" name="ID" type="text" placeholder="Enter TUP-ID" required>
+          <input id="bday" name="bday" type="text" placeholder="Enter Birthday" required>
+          <input id="password" name="password" type="password" placeholder="Password" required>
+          <select id="SOT" name="SOT">
+            <option value="Student">Student</option>
+            <option value="Teacher">Teacher</option>
+          </select>
+          <input type="submit" value="Register" />
+          <p id="message" style="color: green; display: none;"></p>
+          <p id="error-message" style="color: red; display: none;"></p>
+          <div class="group">
+            <a href="index.html">Have an account already?</a>
+            <a href="index.html">Go back</a>
+          </div>
+        </div>
       </div>
     </div>
-  </div>
-</div>
-</form>
-<!-- partial -->
-  
+  </form>
+
+<script>
+const form = document.getElementById('registrationForm');
+const message = document.getElementById('message');
+const errorMsg = document.getElementById('error-message');
+
+form.addEventListener('submit', async (e) => {
+  e.preventDefault();
+
+  const data = {
+    fullname: document.getElementById('fullname').value,
+    username: document.getElementById('username').value,
+    ID: document.getElementById('ID').value,
+    bday: document.getElementById('bday').value,
+    password: document.getElementById('password').value,
+    SOT: document.getElementById('SOT').value
+  };
+
+  message.style.display = 'none';
+  errorMsg.style.display = 'none';
+
+  try {
+    const response = await fetch('https://codebloom-thesis.onrender.com/registration.html', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(data)
+    });
+
+    if (response.ok) {
+      message.textContent = "Registration successful! Redirecting to login...";
+      message.style.display = 'block';
+      setTimeout(() => {
+        window.location.href = "index.html";
+      }, 2000);
+    } else {
+      const text = await response.text();
+      errorMsg.textContent = "Registration failed: " + text;
+      errorMsg.style.display = 'block';
+    }
+
+  } catch (err) {
+    console.error('Registration error:', err);
+    errorMsg.textContent = "Server error. Try again later.";
+    errorMsg.style.display = 'block';
+  }
+});
+</script>
+
 </body>
 </html>

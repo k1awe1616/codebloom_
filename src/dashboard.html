@@ -2,9 +2,92 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CAPSTONE - Dashboard</title>
     <link rel="stylesheet" href="dashboard.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.5.1/css/all.css">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: #f9f9f9;
+        }
+        .dashboard-container {
+            max-width: 1200px;
+            margin: 20px auto;
+            padding: 20px;
+            background: #fff;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+        .dashboard-header h1 {
+            text-align: center;
+            margin-bottom: 20px;
+            color: #333;
+        }
+        .dashboard-controls {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .dashboard-controls button {
+            padding: 10px 20px;
+            margin: 0 5px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            background: #007bff;
+            color: #fff;
+            transition: 0.3s;
+        }
+        .dashboard-controls button.active {
+            background: #0056b3;
+        }
+        .dashboard-controls button:hover {
+            background: #0056b3;
+        }
+        .dashboard-content table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+        .dashboard-content th, 
+        .dashboard-content td {
+            border: 1px solid #ddd;
+            padding: 10px;
+            text-align: center;
+        }
+        .dashboard-content th {
+            background: #007bff;
+            color: #fff;
+        }
+        .dashboard-content ul {
+            list-style-type: disc;
+            padding-left: 20px;
+        }
+        .back-link {
+            text-align: center;
+            margin-top: 20px;
+        }
+        .back-link a {
+            display: inline-block;
+            padding: 10px 15px;
+            background: #007bff;
+            color: #fff;
+            border-radius: 5px;
+            text-decoration: none;
+            transition: 0.3s;
+        }
+        .back-link a:hover {
+            background: #0056b3;
+        }
+        .loading {
+            text-align: center;
+            font-style: italic;
+            color: #555;
+            margin-bottom: 15px;
+        }
+    </style>
 </head>
 <body>
 
@@ -19,13 +102,14 @@
     </div>
 
     <div id="content" class="dashboard-content">
-        <p>Click a button to view data.</p>
+        <p class="loading">Loading data...</p>
     </div>
     
     <div class="back-link">
-        <a href="Menu.html" class="btn"><i class="fas fa-arrow-left"></i> Back to Menu</a>
+        <a href="Menu.html"><i class="fas fa-arrow-left"></i> Back to Menu</a>
     </div>
 </main>
+
 <script src="dashboard.js"></script>
 </body>
 </html>
