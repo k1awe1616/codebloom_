@@ -1,0 +1,160 @@
+@import url("https://fonts.googleapis.com/css?family=Poppins:200,300,400,500,600,700,800,900&display=swap");
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  min-height: 100vh;
+  margin: 0;
+  padding: 20px;
+  background: url(codeblmbg.png) no-repeat center center/cover;
+  font-family: "Poppins", sans-serif;
+  color: #fff;
+}
+
+/* Question Box */
+.question, .passed {
+  background: #007acc; /* blue box */
+  border: 3px solid #000; /* cyan accent */
+  border-radius: 15px;
+  padding: 30px;
+  margin: 15px 0;
+  width: 600px;
+  max-width: 95%;
+  text-align: center;
+  box-shadow: 0 5px 15px #00000080;
+  color: #fefefe;
+}
+
+/* Question Heading */
+.question h2, .passed h2 {
+  font-size: 20px;
+  margin-bottom: 20px;
+  font-weight: 600;
+}
+
+/* Answer Buttons */
+.menuBx input[type="submit"] {
+  width: 100%;
+  padding: 12px;
+  margin: 10px 0;
+  font-size: 16px;
+  font-weight: 600;
+  color: #000;
+  background: #fefefe;
+  border: 2px solid #000;
+  border-radius: 30px;
+  cursor: pointer;
+  transition: 0.3s ease-in-out;
+ box-shadow: 0 5px 15px #00000040;
+}
+
+.menuBx input[type="submit"]:hover {
+  background: #39cccc;
+  color: #000;
+  transform: scale(1.05);
+}
+
+/* Quit & Back Links */
+.group {
+  margin-top: 20px;
+  text-align: center;
+}
+
+.group a {
+  text-decoration: none;
+  background: #007acc;
+  color: #fefe;
+  font-weight: bold;
+  padding: 8px 15px;
+  border: 2px solid #000;
+  border-radius: 8px;
+  transition: 0.3s;
+}
+
+.group a:hover {
+  background: #39cccc;
+  color: #000;
+}
+
+#title {
+  color:#000;
+}
+
+
+
+.correct {
+  border: 6px solid #09f809 !important;
+  background-color: #d4f8d4; /* light green background */
+}
+
+.wrong {
+  border: 6px solid red !important;
+}
+
+
+
+body {
+  font-family: Arial, sans-serif;
+  background: #f4f4f4;
+  text-align: center;
+  padding: 20px;
+}
+
+pre {
+  background: #1e1e1e;
+  color: #dcdcdc;
+  text-align: left;
+  padding: 15px;
+  border-radius: 10px;
+  width: 80%;
+  margin: auto;
+  font-family: monospace;
+}
+
+.choices {
+  margin: 20px;
+}
+
+.choices input[type="text"] {
+  width: 60%;
+  padding: 10px;
+  border: 2px solid #007acc;
+  border-radius: 6px;
+  margin-right: 10px;
+}
+
+.choices button {
+  padding: 10px 20px;
+  background: #007acc;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.choices button:hover {
+  background: #005f99;
+}
+
+.feedback {
+  margin-top: 15px;
+  font-weight: bold;
+}
+
+
+#timer {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  background: #007acc;
+  color: white;
+  padding: 10px 15px;
+  border-radius: 10px;
+  font-weight: bold;
+  font-size: 16px;
+  border: 2px solid #000;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.4);
+  z-index: 1000;
+}

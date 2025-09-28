@@ -1,0 +1,153 @@
+@import url("https://fonts.googleapis.com/css?family=Poppins:200,300,400,500,600,700,800,900&display=swap");
+
+/* General Body & Layout */
+body {
+    font-family: "Poppins", sans-serif;
+    background-color: #f0f4f8; /* Light blue background */
+    margin: 0;
+    padding: 0;
+    color: #333;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+/* Header */
+#page-header {
+    background: linear-gradient(to right, #007acc, #39cccc);
+    color: #fff;
+    padding: 20px;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+#page-header h1 {
+    font-size: 2.5rem;
+    margin: 0;
+    font-weight: 600;
+}
+
+/* Main Container */
+.container {
+    flex-grow: 1;
+    padding: 20px;
+    max-width: 1000px;
+    margin: 20px auto;
+}
+
+/* Selector Dropdown */
+.controls {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+select {
+    padding: 10px 15px;
+    font-size: 1rem;
+    border-radius: 8px;
+    border: 2px solid #ccc;
+    background: #fff;
+    color: #333;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+select:focus {
+    outline: none;
+    border-color: #007acc;
+    box-shadow: 0 0 5px rgba(0, 122, 204, 0.5);
+}
+
+/* Table */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: #fff;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+}
+
+th, td {
+    padding: 18px;
+    text-align: center;
+}
+
+thead th {
+    background-color: #007acc;
+    color: #fff;
+    text-transform: uppercase;
+    font-size: 0.9rem;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+}
+
+tbody tr:nth-child(even) {
+    background-color: #f8f8f8;
+}
+
+tbody tr:hover {
+    background-color: #e6f7ff;
+    transition: background-color 0.3s ease;
+}
+
+.rank {
+    font-weight: 700;
+    color: #007acc;
+    width: 10%;
+}
+
+.rank:before {
+    content: "#";
+}
+
+/* Buttons */
+.buttons {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 25px;
+    background-color: #007acc;
+    color: #fff;
+    font-weight: 600;
+    border-radius: 50px;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 10px rgba(0, 122, 204, 0.3);
+}
+
+.btn:hover {
+    background-color: #39cccc;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 15px rgba(0, 122, 204, 0.4);
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    .container {
+        padding: 10px;
+    }
+    table, th, td {
+        font-size: 0.8rem;
+    }
+}
+.header-logo-right {
+    position: absolute;
+    top: 15px; /* Adjust as needed */
+    right: 20px; /* Adjust as needed */
+    /* If you want the logo to be part of the header's vertical alignment,
+       you might use flexbox on the header and order properties,
+       but absolute positioning is simpler for a fixed corner. */
+}
+
+.header-logo-right img {
+    height: 70px; /* Adjust logo size as needed */
+    width: auto;
+    border-radius: 50%; /* If you want a circular logo */
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+}

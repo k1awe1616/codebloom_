@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>CAPSTONE - C# Quiz</title>
+  <link rel="stylesheet" href="./levels.css"> 
+</head>
+<body>
+  <div id="timer">Time Elapsed: <span id="time">0</span> seconds</div>
+
+  <h1 id="title"> C# LANGUAGE</h1>
+
+
+<!-- Question 1 -->
+<div class="box1 question" id="question1">
+  <div class="menu">
+    <div class="menuBx">
+      <h2><center>1. What is C# primarily used for?</center></h2>
+      <input type="submit" id="answer1" value="Web development">
+      <input type="submit" id="wrong1" value="System programming"/>
+      <input type="submit" id="wrong1b" value="Mobile app development"/>
+    </div>
+  </div>
+</div>
+
+<!-- Question 2 -->
+<div class="box2 question" id="question2" style="display: none;">
+  <div class="menu">
+    <div class="menuBx">
+      <h2><center>2. Which keyword is used to define a method in C#?</center></h2>
+      <input type="submit" id="wrong2" value="function"/>
+      <input type="submit" id="answer2" value="void">
+      <input type="submit" id="wrong2b" value="method"/>
+    </div>
+  </div>
+</div>
+
+<!-- Question 3 -->
+<div class="box3 question" id="question3" style="display: none;">
+  <div class="menu">
+    <div class="menuBx">
+      <h2><center>3. What is the correct way to declare a variable in C#?</center></h2>
+      <input type="submit" id="wrong3" value="x := 10;"/>
+      <input type="submit" id="answer3" value="var x = 10;">
+      <input type="submit" id="wrong3b" value="let x = 10;"/>
+    </div>
+  </div>
+</div>
+
+<!-- Question 4 -->
+<div class="box4 question" id="question4" style="display: none;">
+  <div class="menu">
+    <div class="menuBx">
+      <h2><center>4. Which access modifier allows a member to be accessed only within its own class?</center></h2>
+      <input type="submit" id="answer4" value="private">
+      <input type="submit" id="wrong4" value="protected"/>
+      <input type="submit" id="wrong4b" value="public"/>
+    </div>
+  </div>
+</div>
+
+<!-- Question 5 -->
+<div class="box5 question" id="question5" style="display: none;">
+  <div class="menu">
+    <div class="menuBx">
+      <h2><center>5. What is the default value of an uninitialized integer variable in C#?</center></h2>
+      <input type="submit" id="wrong5" value="null"/>
+      <input type="submit" id="wrong5b" value="undefined"/>
+      <input type="submit" id="answer5" value="0">
+
+    </div>
+  </div>
+</div>
+
+<!-- Question 6 -->
+<div class="box6 question" id="question6" style="display: none;">
+  <div class="menu">
+    <div class="menuBx">
+      <h2><center>6. What is the correct syntax for a conditional statement in C#?</center></h2>
+      <input type="submit" id="answer6" value="if (x > 10) { }">
+      <input type="submit" id="wrong6" value="if x > 10 then { }"/>
+      <input type="submit" id="wrong6b" value="if x > 10: { }"/>
+    </div>
+  </div>
+</div>
+
+<!-- Question 7 -->
+<div class="box7 question" id="question7" style="display: none;">
+  <div class="menu">
+    <div class="menuBx">
+      <h2><center>7. Which of the following is used to handle exceptions in C#?</center></h2>
+      <input type="submit" id="wrong7" value="throw-except"/>
+       <input type="submit" id="answer7" value="try-catch">
+      <input type="submit" id="wrong7b" value="error-handler"/>
+    </div>
+  </div>
+</div>
+
+<!-- Question 8 -->
+<div class="box8 question" id="question8" style="display: none;">
+  <div class="menu">
+    <div class="menuBx">
+      <h2><center>8. What is the output type of the Console.ReadLine() method?</center></h2>
+      <input type="submit" id="answer8" value="string">
+      <input type="submit" id="wrong8" value="int"/>
+      <input type="submit" id="wrong8b" value="char"/>
+    </div>
+  </div>
+</div>
+
+<!-- Question 9 -->
+<div class="box9 question" id="question9" style="display: none;">
+  <div class="menu">
+    <div class="menuBx">
+      <h2><center>9. Which loop is best used when the number of iterations is known beforehand?</center></h2>
+      <input type="submit" id="wrong9" value="while"/>
+            <input type="submit" id="answer9" value="for">
+
+      <input type="submit" id="wrong9b" value="foreach"/>
+    </div>
+  </div>
+</div>
+
+<!-- Question 10 -->
+<div class="box10 question" id="question10" style="display: none;">
+  <div class="menu">
+    <div class="menuBx">
+      <h2><center>10. Which of the following correctly declares a class in C#?</center></h2>
+      <input type="submit" id="wrong10" value="MyClass class { }"/>
+      <input type="submit" id="wrong10b" value="define class MyClass { }"/>
+      <input type="submit" id="answer10" value="class MyClass { }">
+
+    </div>
+  </div>
+</div>
+
+
+ <!-- Debugging Challenge 1 -->
+  <div class="box11 question" id="question11" style="display:none;">
+    <div class="menu">
+      <div class="menuBx">
+        <h2>11. Find the missing part of the program:</h2>
+        <pre>
+using System;
+class Program 
+  static void Main(string[] args) {
+    Console.WriteLine("Hello World")
+  }
+}
+        </pre>
+        <div class="choices">
+          <input type="text" id="input11" placeholder="Type your fix here...">
+          <button onclick="checkTextAnswer('input11','class Program {','question11','question12')">Submit</button>
+        </div>
+        <div id="feedback11" class="feedback"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Debugging Challenge 2 -->
+  <div class="box12 question" id="question12" style="display:none;">
+    <div class="menu">
+      <div class="menuBx">
+        <h2>12. Fix the code in line 3:</h2>
+        <pre>
+using System;
+class Program {
+  void Main(string[] args) {
+    Console.WriteLine("Test");
+  }
+}
+        </pre>
+        <div class="choices">
+          <input type="text" id="input12" placeholder="Type your fix here...">
+          <button onclick="checkTextAnswer('input12','static void Main(string[] args) {','question12','question13')">Submit</button>
+        </div>
+        <div id="feedback12" class="feedback"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Debugging Challenge 3 -->
+  <div class="box13 question" id="question13" style="display:none;">
+    <div class="menu">
+      <div class="menuBx">
+        <h2>13. Fix the code in line 4:</h2>
+        <pre>
+using System;
+class Program {
+  static void Main(string[] args) {
+    int x = "10";  
+    Console.WriteLine(x);
+  }
+}
+        </pre>
+        <div class="choices">
+          <input type="text" id="input13" placeholder="Type your fix here...">
+          <button onclick="checkTextAnswer('input13','int x = 10;','question13','question14')">Submit</button>
+        </div>
+        <div id="feedback13" class="feedback"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Debugging Challenge 4 -->
+  <div class="box14 question" id="question14" style="display:none;">
+    <div class="menu">
+      <div class="menuBx">
+        <h2>14. What line is the problem in this program? </h2>
+        <pre>
+using System;
+class Program {
+  static void Main(string[] args) {
+    for(int i = 0; i < 5; i++) {
+      Console.WriteLine(i);
+    
+}
+        </pre>
+        <div class="choices">
+          <input type="text" id="input14" placeholder="Type your fix here...">
+          <button onclick="checkTextAnswer('input14','line 6','question14','question15')">Submit</button>
+        </div>
+        <div id="feedback14" class="feedback"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Debugging Challenge 5 -->
+  <div class="box15 question" id="question15" style="display:none;">
+    <div class="menu">
+      <div class="menuBx">
+        <h2>15. Find the missing part in this code:</h2>
+        <pre>
+class Program {
+  static void Main(string[] args) {
+    Console.WriteLine("Hello");
+  }
+}
+
+        </pre>
+        <div class="choices">
+          <input type="text" id="input15" placeholder="Type your fix here...">
+          <button onclick="checkTextAnswer('input15','using System;','question15','passed')">Submit</button>
+        </div>
+        <div id="feedback15" class="feedback"></div>
+      </div>
+    </div>
+  </div>
+
+<!-- Finished -->
+<div class="box11 passed" id="passed" style="display: none;">
+  <div class="menu">
+    <div class="menuBx">
+      <h2><center>🎉 Congratulations! You have completed the C# Language! 🎉</center></h2>
+      <a href="levels.html"><input type="submit" value="Go Back"></a>
+    </div>
+  </div>
+</div>
+
+<!-- Quit Button -->
+<div id="quit" class="group">
+  <a href="levels.html">Back to menu</a>
+</div>
+
+<!-- JavaScript -->
+<script src="level 5.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Debugging Practice</title>
+  <link rel="stylesheet" href="debugger.css">
+</head>
+<body>
+
+<header>
+  <h1>🛠 Debugging Practice</h1>
+</header>
+
+<div class="selector">
+  <label for="language">Choose Language: </label>
+  <select id="language">
+    <option value="cpp">C++</option>
+    <option value="python">Python</option>
+    <option value="csharp">C#</option>
+  </select>
+</div>
+
+<div id="debug-area">
+  <h2 id="problem-title">Problem</h2>
+  <pre id="code-block"></pre>
+  <div class="choices" id="choices"></div>
+</div>
+
+<div class="controls">
+  <button id="check-btn">Check Answer</button>
+  <button id="show-solution">Show Solution</button>
+</div>
+
+<div id="feedback"></div>
+
+<script src="debugger.js"></script>
+</body>
+</html>

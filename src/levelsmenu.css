@@ -1,0 +1,116 @@
+@import url("https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700&display=swap");
+
+body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  margin: 0;
+  font-family: "Poppins", sans-serif;
+  color: #fff;
+  background: url(codeblmbg.png) no-repeat center center/cover;
+}
+
+/* Header */
+.page-header {
+  width: 100%;
+  text-align: center;
+  padding: 20px;
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(6px);
+  color: #39cccc;
+  font-size: 24px;
+  font-weight: 600;
+  letter-spacing: 1px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.4);
+}
+
+/* Container */
+.box {
+  background: rgba(0, 122, 204, 0.85);
+  backdrop-filter: blur(8px);
+  padding: 30px;
+  border-radius: 20px;
+  box-shadow: 0px 8px 25px rgba(0,0,0,0.5);
+  text-align: center;
+  width: 420px;
+  max-width: 95%;
+  color: #fefefe;
+  margin-top: 20px;
+}
+
+/* Menu */
+.menuBx {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+/* Buttons */
+.menuBx input[type="submit"] {
+  width: 100%;
+  padding: 14px;
+  font-size: 18px;
+  font-weight: 600;
+  color: #333;
+  background: #fefefe;
+  border: 2px solid transparent;
+  border-radius: 30px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+}
+
+.menuBx input[type="submit"]:hover {
+  background: #39cccc;
+  color: #fff;
+  border: 2px solid #fff;
+  transform: translateY(-3px) scale(1.05);
+  box-shadow: 0 10px 20px rgba(57,204,204,0.5);
+}
+
+/* Back Link */
+.group a {
+  display: inline-block;
+  margin-top: 15px;
+  text-decoration: none;
+  padding: 10px 20px;
+  border-radius: 25px;
+  background: #39cccc;
+  color: #000;
+  font-weight: 600;
+  transition: 0.3s;
+}
+
+.group a:hover {
+  background: #fff;
+  color: #007acc;
+}
+
+/* Tooltips */
+.menuItem {
+  position: relative;
+}
+
+.menuItem::after {
+  content: attr(data-info);
+  position: absolute;
+  left: 105%;
+  top: 50%;
+  transform: translateY(-50%) translateX(10px);
+  background: #000000cc;
+  color: #fff;
+  padding: 8px 12px;
+  border-radius: 8px;
+  white-space: nowrap;
+  opacity: 0;
+  pointer-events: none;
+  transition: all 0.3s ease;
+  font-size: 13px;
+}
+
+.menuItem:hover::after {
+  opacity: 1;
+  transform: translateY(-50%) translateX(0);
+}

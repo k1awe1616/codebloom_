@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Codebloom</title>
+  <link rel="stylesheet" href="./capsstyle.css">
+</head>
+<body>
+<h1>Hello! Welcome to student Assessment Site.</h1>
+<form action="/" method="post">
+  <div class="box">
+    <div class="login">
+      <div class="loginBx">
+        <h2>
+          <i class="fa-solid fa-right-to-bracket"></i>
+          Login
+        </h2>
+        <input id="username" name="username" type="text" placeholder="Username">
+        <input id="password" name="password" type="password" placeholder="Password">
+        <input type="submit" id="loginbutton" value="Log in" />
+        
+        <!-- Error message placeholder -->
+        <p id="error-message" style="color: red; display: none;">Incorrect email/password</p>
+
+        <div class="loading" id="loading" style="display: none;"></div>
+        <div class="group">
+          <a href="forgotpassword.html">Forgot Password</a>
+          <a href="registration.html">Sign up</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</form>
+
+<script>
+  // Check if ?error=1 exists in URL
+    const params = new URLSearchParams(window.location.search);
+    if (params.get("error") === "1") {
+      document.getElementById("error-message").style.display = "block";
+    } else {
+      const username = document.getElementById("username").value;
+      localStorage.setItem("username", username);
+
+    }
+     
+</script>
+</body>
+</html>

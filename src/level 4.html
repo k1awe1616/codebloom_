@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>CAPSTONE - C++ Quiz</title>
+  <link rel="stylesheet" href="./levels.css"> 
+</head>
+<body>
+  <div id="timer">Time Elapsed: <span id="time">0</span> seconds</div>
+
+  <h1 id="title"> C++ LANGUAGE</h1>
+
+
+<!-- Question 1 -->
+<div class="box1 question" id="question1">
+  <div class="menu">
+    <div class="menuBx">
+      <h2><center>1. What is #include &lt;iostream&gt;?</center></h2>
+      <input type="submit" id="answer1" value="A header file library">
+      <input type="submit" id="wrong1" value="An object"/>
+      <input type="submit" id="wrong1b" value="A namespace"/>
+    </div>
+  </div>
+</div>
+
+<!-- Question 2 -->
+<div class="box2 question" id="question2" style="display: none;">
+  <div class="menu">
+    <div class="menuBx">
+      <h2><center>2. C++ is case-sensitive: 'main' and 'Main' have different meanings.</center></h2>
+      <input type="submit" id="answer2" value="True">
+      <input type="submit" id="wrong2" value="False"/>
+    </div>
+  </div>
+</div>
+
+<!-- Question 3 -->
+<div class="box3 question" id="question3" style="display: none;">
+  <div class="menu">
+    <div class="menuBx">
+      <h2><center>3. Which object is used to print text?</center></h2>
+      <input type="submit" id="answer3" value="cout">
+      <input type="submit" id="wrong3" value="println"/>
+      <input type="submit" id="wrong3b" value="printf"/>
+    </div>
+  </div>
+</div>
+
+<!-- Question 4 -->
+<div class="box4 question" id="question4" style="display: none;">
+  <div class="menu">
+    <div class="menuBx">
+      <h2><center>4. Which character can be used to insert a new line in your output?</center></h2>
+      <input type="submit" id="wrong4a" value="\c"/>
+            <input type="submit" id="answer4" value="\n">
+
+      <input type="submit" id="wrong4b" value="\i"/>
+    </div>
+  </div>
+</div>
+
+<!-- Question 5 -->
+<div class="box5 question" id="question5" style="display: none;">
+  <div class="menu">
+    <div class="menuBx">
+      <h2><center>5. Which of the following is a correct way to declare multiple integer variables called a, b, and c?</center></h2>
+      <input type="submit" id="wrong5" value="int a b c;"/>
+      <input type="submit" id="wrong5a" value="int a; int b; int c;"/>
+        <input type="submit" id="answer5" value="int a, b, c;">
+
+    </div>
+  </div>
+</div>
+
+<!-- Question 6 -->
+<div class="box6 question" id="question6" style="display: none;">
+  <div class="menu">
+    <div class="menuBx">
+      <h2><center>6. What is the output of the following code?<br>int x = 5, y = 10;<br>cout &lt;&lt; x + y;</center></h2>
+      <input type="submit" id="wrong6a" value="5"/>
+      <input type="submit" id="answer6" value="15">
+      <input type="submit" id="wrong6b" value="10"/>
+    </div>
+  </div>
+</div>
+
+<!-- Question 7 -->
+<div class="box7 question" id="question7" style="display: none;">
+  <div class="menu">
+    <div class="menuBx">
+      <h2><center>7. Which of the following statements correctly assigns the same value to two variables?</center></h2>
+      <input type="submit" id="wrong7a" value="int x == y = 10;"/>
+            <input type="submit" id="answer7" value="int x, y; x = y = 10;">
+
+      <input type="submit" id="wrong7b" value="int (x = 10), (y = 10);"/>
+    </div>
+  </div>
+</div>
+
+<!-- Question 8 -->
+<div class="box8 question" id="question8" style="display: none;">
+  <div class="menu">
+    <div class="menuBx">
+      <h2><center>8. Which is NOT a legal variable name?</center></h2>
+      <input type="submit" id="answer8" value="int int = 20;">
+      <input type="submit" id="wrong8a" value="int myInteger = 20;"/>
+      <input type="submit" id="wrong8b" value="int myNum = 20;"/>
+    </div>
+  </div>
+</div>
+
+<!-- Question 9 -->
+<div class="box9 question" id="question9" style="display: none;">
+  <div class="menu">
+    <div class="menuBx">
+      <h2><center>9. All C++ variables must be identified with unique names.</center></h2>
+      <input type="submit" id="answer9" value="True">
+      <input type="submit" id="wrong9a" value="False"/>
+    </div>
+  </div>
+</div>
+
+<!-- Question 10 -->
+<div class="box10 question" id="question10" style="display: none;">
+  <div class="menu">
+    <div class="menuBx">
+      <h2><center>10. In C++, identifiers can start with a number.</center></h2>
+      <input type="submit" id="answer10" value="False">
+      <input type="submit" id="wrong10a" value="True"/>
+    </div>
+  </div>
+</div>
+
+
+<!-- Debugging Challenge 1 -->
+<div class="box11 question" id="question11" style="display:none;">
+  <div class="menu">
+    <div class="menuBx">
+      <h2>11. The following C++ program has an error. What is missing in the code?</h2>
+      <pre>
+#include &lt;iostream&gt;
+using namespace std;
+int main() {
+  cout &lt;&lt; "Hello World"
+  return 0;
+}
+      </pre>
+      <div class="choices">
+        <input type="text" id="input11" placeholder="Type your fix here...">
+        <button onclick="checkTextAnswer('input11',';','question11','question12')">Submit</button>
+      </div>
+      <div id="feedback11" class="feedback"></div>
+    </div>
+  </div>
+</div>
+
+<!-- Debugging Challenge 2 -->
+<div class="box12 question" id="question12" style="display:none;">
+  <div class="menu">
+    <div class="menuBx">
+      <h2>12. The following C++ program has an error. What is missing in the code?</h2>
+      <pre>
+#include &lt;iostream&gt;
+using namespace std;
+int main {
+  cout &lt;&lt; "Test";
+  return 0;
+}
+      </pre>
+      <div class="choices">
+        <input type="text" id="input12" placeholder="Type your fix here...">
+        <button onclick="checkTextAnswer('input12','int main()','question12','question13')">Submit</button>
+      </div>
+      <div id="feedback12" class="feedback"></div>
+    </div>
+  </div>
+</div>
+
+<!-- Debugging Challenge 3 -->
+<div class="box13 question" id="question13" style="display:none;">
+  <div class="menu">
+    <div class="menuBx">
+      <h2>13. Fix the code in line 5:</h2>
+      <pre>
+#include &lt;iostream&gt;
+using namespace std;
+int main() {
+  int num = "100";
+  cout &lt;&lt; num;
+  return 0;
+}
+      </pre>
+      <div class="choices">
+        <input type="text" id="input13" placeholder="Type your fix here...">
+        <button onclick="checkTextAnswer('input13','int num = 100;','question13','question14')">Submit</button>
+      </div>
+      <div id="feedback13" class="feedback"></div>
+    </div>
+  </div>
+</div>
+
+<!-- Debugging Challenge 4 -->
+<div class="box14 question" id="question14" style="display:none;">
+  <div class="menu">
+    <div class="menuBx">
+      <h2>14. Find the missing part in this program.</h2>
+      <pre>
+#include <iostream>
+using namespace std;
+
+int main() 
+  cout << "Hello World";
+  return 0;
+
+
+      </pre>
+      <div class="choices">
+        <input type="text" id="input14" placeholder="Type your fix here...">
+        <button onclick="checkTextAnswer('input14','{}','question14','question15')">Submit</button>
+      </div>
+      <div id="feedback14" class="feedback"></div>
+    </div>
+  </div>
+</div>
+
+<!-- Debugging Challenge 5 -->
+<div class="box15 question" id="question15" style="display:none;">
+  <div class="menu">
+    <div class="menuBx">
+      <h2>15. Fix the code in line 6</h2>
+      <pre>
+#include <iostream>
+using namespace std;
+
+int main() {
+  cout < x
+  int x = 5
+  return 0;
+}
+      </pre>
+      <div class="choices">
+        <input type="text" id="input15" placeholder="Type your fix here...">
+        <button onclick="checkTextAnswer('input15','cout << x;','question15','passed')">Submit</button>
+      </div>
+      <div id="feedback15" class="feedback"></div>
+    </div>
+  </div>
+</div>
+
+<!-- Finished -->
+<div class="box11 passed" id="passed" style="display: none;">
+  <div class="menu">
+    <div class="menuBx">
+      <h2><center>🎉Well done! Your hard work is paying off.</center></h2>
+      <a href="levels.html"><input type="submit" value="Go Back"></a>
+    </div>
+  </div>
+</div>
+
+<!-- Quit Button -->
+<div id="quit" class="group">
+  <a href="levels.html">Back to menu</a>
+</div>
+
+<!-- JavaScript -->
+<script src="level 4.js"></script>
+
+</body>
+</html>

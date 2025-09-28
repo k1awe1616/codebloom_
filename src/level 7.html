@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>CAPSTONE - SQL Quiz</title>
+  <link rel="stylesheet" href="./levels.css"> 
+</head>
+<body>
+  <div id="timer">Time Elapsed: <span id="time">0</span> seconds</div>
+
+  <h1 id="title"> SQL LANGUAGE</h1>
+
+
+<!-- First Question -->
+<div class="box1 question" id="question1">
+  <div class="menu">
+    <div class="menuBx">
+      <h2><center>1. Which SQL statement is used to retrieve data from a database?</center></h2>
+      <input type="submit" id="answer1" value="SELECT">
+      <input type="submit" id="wrong1" value="GET"/>
+    </div>
+  </div>
+</div>
+
+<!-- Second Question (Hidden Initially) -->
+<div class="box2 question" id="question2" style="display: none;">
+  <div class="menu">
+    <div class="menuBx">
+      <h2><center>2. Which clause is used to filter records in SQL?</center></h2>
+      <input type="submit" id="answer2" value="WHERE">
+      <input type="submit" id="wrong2" value="FILTER"/>
+    </div>
+  </div>
+</div>
+
+<!-- Third Question (Hidden Initially) -->
+<div class="box3 question" id="question3" style="display: none;">
+  <div class="menu">
+    <div class="menuBx">
+      <h2><center>3. What does the SQL ORDER BY clause do?</center></h2>
+      <input type="submit" id="wrong3" value="Filters data"/>
+      <input type="submit" id="answer3" value="Sorts data">
+    </div>
+  </div>
+</div>
+
+<!-- Fourth Question -->
+<div class="box4 question" id="question4" style="display: none;">
+  <div class="menu">
+    <div class="menuBx">
+      <h2><center>4. Which SQL keyword is used to remove all records from a table without deleting the table structure?</center></h2>
+      <input type="submit" id="wrong4" value="DROP"/>
+      <input type="submit" id="wrong4b" value="DELETE"/>
+      <input type="submit" id="answer4" value="TRUNCATE"/>
+    </div>
+  </div>
+</div>
+
+<!-- Fifth Question -->
+<div class="box5 question" id="question5" style="display: none;">
+  <div class="menu">
+    <div class="menuBx">
+      <h2><center>5. What is the primary purpose of the SQL GROUP BY clause?</center></h2>
+      <input type="submit" id="wrong5" value="To filter rows"/>
+      <input type="submit" id="wrong5b" value="To delete duplicate records"/>
+      <input type="submit" id="answer5" value="To group rows with similar values"/>
+    </div>
+  </div>
+</div>
+
+<!-- Sixth Question -->
+<div class="box6 question" id="question6" style="display: none;">
+  <div class="menu">
+    <div class="menuBx">
+      <h2><center>6. Which SQL command is used to insert new data into a table?</center></h2>
+      <input type="submit" id="answer6" value="INSERT"/>
+      <input type="submit" id="wrong6" value="ADD"/>
+      <input type="submit" id="wrong6b" value="APPEND"/>
+    </div>
+  </div>
+</div>
+
+<!-- Seventh Question -->
+<div class="box7 question" id="question7" style="display: none;">
+  <div class="menu">
+    <div class="menuBx">
+      <h2><center>7. What does the JOIN clause do in SQL?</center></h2>
+      <input type="submit" id="wrong7" value="Merges duplicate rows"/>
+      <input type="submit" id="answer7" value="Combines rows from two or more tables"/>
+      <input type="submit" id="wrong7b" value="Deletes duplicate rows"/>
+    </div>
+  </div>
+</div>
+
+<!-- Eighth Question -->
+<div class="box8 question" id="question8" style="display: none;">
+  <div class="menu">
+    <div class="menuBx">
+      <h2><center>8. Which SQL constraint ensures that a column cannot have duplicate values?</center></h2>
+      <input type="submit" id="answer8" value="UNIQUE"/>
+      <input type="submit" id="wrong8" value="DISTINCT"/>
+      <input type="submit" id="wrong8b" value="CHECK"/>
+    </div>
+  </div>
+</div>
+
+<!-- Ninth Question -->
+<div class="box9 question" id="question9" style="display: none;">
+  <div class="menu">
+    <div class="menuBx">
+      <h2><center>9. What will happen if you run DELETE FROM table_name; without a WHERE clause?</center></h2>
+      <input type="submit" id="wrong9" value="Deletes only the first row"/>
+      <input type="submit" id="wrong9b" value="Deletes the table structure"/>
+      <input type="submit" id="answer9" value="Deletes all rows in the table"/>
+
+    </div>
+  </div>
+</div>
+
+<!-- Tenth Question -->
+<div class="box10 question" id="question10" style="display: none;">
+  <div class="menu">
+    <div class="menuBx">
+      <h2><center>10. Which SQL function is used to return the total number of rows in a table?</center></h2>
+      <input type="submit" id="wrong10" value="SUM()"/>
+      <input type="submit" id="answer10" value="COUNT()"/>
+      <input type="submit" id="wrong10b" value="TOTAL()"/>
+    </div>
+  </div>
+</div>
+
+
+<!-- Debugging Challenge 1 -->
+  <div class="box11 question" id="question11" style="display:none;">
+    <div class="menu">
+      <div class="menuBx">
+        <h2>11. Debug this SQL code:</h2>
+        <pre>
+SELEC * FROM students;
+        </pre>
+        <div class="choices">
+          <input type="text" id="input11" placeholder="Type your fix here...">
+          <button onclick="checkTextAnswer('input11','SELECT','question11','question12')">Submit</button>
+        </div>
+        <div id="feedback11" class="feedback"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Debugging Challenge 2 -->
+  <div class="box12 question" id="question12" style="display:none;">
+    <div class="menu">
+      <div class="menuBx">
+        <h2>12. Debug this SQL code: Find the missing part of this program?</h2>
+        <pre>
+SELECT name age FROM employees;
+        </pre>
+        <div class="choices">
+          <input type="text" id="input12" placeholder="Type your fix here...">
+          <button onclick="checkTextAnswer('input12',',','question12','question13')">Submit</button>
+        </div>
+        <div id="feedback12" class="feedback"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Debugging Challenge 3 -->
+  <div class="box13 question" id="question13" style="display:none;">
+    <div class="menu">
+      <div class="menuBx">
+        <h2>13. Debug this SQL code: Find the missing part of this Code</h2>
+        <pre>
+INSERT INTO students VALUES 'John', 20
+        </pre>
+        <div class="choices">
+          <input type="text" id="input13" placeholder="Type your fix here...">
+          <button onclick="checkTextAnswer('input13',';','question13','question14')">Submit</button>
+        </div>
+        <div id="feedback13" class="feedback"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Debugging Challenge 4 -->
+  <div class="box14 question" id="question14" style="display:none;">
+    <div class="menu">
+      <div class="menuBx">
+        <h2>14. Fix line 2</h2>
+        <pre>
+CREATE TABLE students (
+  id INT PRIMARY KEY
+  name VARCHAR(50),
+  age INT
+);
+
+        </pre>
+        <div class="choices">
+          <input type="text" id="input14" placeholder="Type your fix here...">
+          <button onclick="checkTextAnswer('input14','id INT PRIMARY KEY,','question14','question15')">Submit</button>
+        </div>
+        <div id="feedback14" class="feedback"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Debugging Challenge 5 -->
+  <div class="box15 question" id="question15" style="display:none;">
+    <div class="menu">
+      <div class="menuBx">
+        <h2>15. Debug this SQL code: type the correct code/</h2>
+        <pre>
+DELETE students WHERE id = 1;
+        </pre>
+        <div class="choices">
+          <input type="text" id="input15" placeholder="Type your fix here...">
+          <button onclick="checkTextAnswer('input15','DELETE FROM students WHERE id = 1;','question15','passed')">Submit</button>
+        </div>
+        <div id="feedback15" class="feedback"></div>
+      </div>
+    </div>
+  </div>
+
+
+<!-- Passed Screen -->
+<div class="box11 passed" id="passed" style="display: none;">
+  <div class="menu">
+    <div class="menuBx">
+      <h2><center>That’s impressive – you really know your SQL basics!</center></h2>
+      <a href="levels.html"><input type="submit" id="back" value="Go back"> </a>
+    </div>
+  </div>
+</div>
+
+<!-- Quit Button -->
+<div id="quit" class="group">
+  <a href="levels.html">Back to menu</a>
+</div>
+
+<!-- Link to JavaScript -->
+<script src="level 7.js"></script>
+
+</body>
+</html>

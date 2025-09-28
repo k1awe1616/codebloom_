@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>CAPSTONE</title>
+  <link rel="stylesheet" href="./studentprogress.css">
+
+</head>
+<body>
+<!-- partial:student progress.partial.html -->
+ <h1>FOR TEACHER USE ONLY.</h1>
+<div class="box">
+  <div class="login">
+    <div class="loginBx">
+      <h2>
+        Enter details
+        
+      </h2>
+      <input type="text" placeholder="Username">
+      <input type="password" placeholder="Password">
+      <a href="dashboard.html"><input type="submit" id="loginbutton" value="Continue" onclick="showLoading()" /> </a>
+      <div class="loading" id="loading" style="display: none;"></div>
+      <div class="group">
+        <a href="Menu.html">Go back</a>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- partial -->
+  
+<script>
+  function showLoading() {
+    // Show loading animation
+    document.getElementById("loading").style.display = "block";
+
+    // Simulate loading delay before redirecting
+    setTimeout(function() {
+      window.location.href = "Menu.html"; 
+    }, 6000);
+  }
+</script>
+
+
+</body>
+</html>

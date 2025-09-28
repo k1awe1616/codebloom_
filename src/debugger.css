@@ -1,0 +1,48 @@
+body {
+  font-family: Arial, sans-serif;
+  background: #f4f4f4;
+  text-align: center;
+  padding: 20px;
+}
+
+header h1 {
+  background: #007acc;
+  color: white;
+  padding: 15px;
+  border-radius: 10px;
+}
+
+#code-block {
+  background: #1e1e1e;
+  color: #dcdcdc;
+  text-align: left;
+  padding: 15px;
+  border-radius: 10px;
+  width: 80%;
+  margin: auto;
+  font-family: monospace;
+}
+
+.choices {
+  margin: 20px;
+}
+
+.choices button {
+  display: block;
+  margin: 10px auto;
+  padding: 10px 20px;
+  background: #007acc;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.choices button:hover {
+  background: #005f99;
+}
+
+#feedback {
+  margin-top: 20px;
+  font-weight: bold;
+}

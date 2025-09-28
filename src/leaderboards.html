@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>CAPSTONE - Leaderboard</title>
+    <link rel="stylesheet" href="leaderboards.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.5.1/css/all.css">
+</head>
+<body>
+
+    <header id="page-header">
+      <div class="header-logo-right">
+            <img src="./logo.png" alt="CodeBloom Logo">
+        </div>
+        <h1>🏆 Student Rankings</h1>
+    </header>
+
+    <main class="container">
+        <div class="controls">
+            <label for="language">Select Language:</label>
+            <select id="language">
+                <option value="html">HTML</option>
+                <option value="css">CSS</option>
+                <option value="java">Java</option>
+                <option value="cpp">C++</option>
+                <option value="csharp">C#</option>
+              <!-- partial 
+  <option value="python">Python</option> -->
+                <option value="sql">SQL</option>
+                <option value="php">PHP</option>
+            </select>
+        </div>
+
+        <table>
+            <thead>
+                <tr>
+                    <th><span class="header-text">Ranking</span></th>
+                    <th><span class="header-text">Student Name</span></th>
+                    <th><span class="header-text">Score</span></th>
+                    <th><span class="header-text">Time Completion</span></th>
+                </tr>
+            </thead>
+            <tbody id="leaderboard-body">
+                </tbody>
+        </table>
+
+        <div class="buttons">
+            <a href="Menu.html" class="btn"><i class="fas fa-arrow-left"></i> Back to Main Menu</a>
+        </div>
+    </main>
+
+    <script src="leaderboards.js"></script>
+</body>
+</html>
