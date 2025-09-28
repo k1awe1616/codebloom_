@@ -63,21 +63,22 @@ app.post('/', async (req, res) => {
 
         if (user) {
             console.log("Login successful:", user.username);
-            return res.redirect(`/Menu.html?username=${encodeURIComponent(user.username)}`);
+            return res.redirect(`https://frontend-codebloom1.onrender.com/Menu.html?username=${encodeURIComponent(user.username)}`);
         } else {
-            return res.redirect('/index.html?error=1');
+            return res.redirect('https://frontend-codebloom1.onrender.com/index.html?error=1');
         }
     } catch (err) {
         console.error("Login error:", err);
-        return res.redirect('/index.html?error=1');
+        return res.redirect('https://frontend-codebloom1.onrender.com/index.html?error=1');
     }
 });
 
+// REGISTRATION
 app.post('/registration.html', async (req, res) => {
     const { fullname, username, password, ID, bday, SOT } = req.body;
     const data = await model1.create({ fullname, username, password, ID, birthday: bday, SOT });
     console.log("Registered:", data);
-    res.redirect('/index.html');
+    res.redirect('https://frontend-codebloom1.onrender.com/index.html');
 });
 
 app.post('/forgot-password', async (req, res) => {
