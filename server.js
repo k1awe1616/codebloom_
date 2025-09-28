@@ -2,12 +2,13 @@ const express = require('express');
 const path = require('path');
 const mongoose = require('mongoose');
 const dotenv = require('dotenv');
-const cors = require('cors'); // <-- Add this
+const cors = require('cors');
 
 dotenv.config(); // must come before process.env usage
 
-const app = express(); // ← MUST add this
+const app = express();
 
+// ✅ Only ONE cors() block
 app.use(cors({
   origin: "https://frontend-codebloom1.onrender.com",  // your frontend URL
   methods: ["GET", "POST", "PUT", "DELETE"],
@@ -15,11 +16,7 @@ app.use(cors({
 }));
 
 app.use(express.json());
-
-// Enable CORS for your frontend
-app.use(cors({
-    origin: process.env.ORIGIN || '*' // ORIGIN from .env, fallback to allow all
-}));
+app.use(express.urlencoded({ extended: false }));
 
 const MONGO_URL = process.env.MONGO_URL;
 console.log("MONGO_URL:", MONGO_URL); // debugging
@@ -28,7 +25,7 @@ mongoose.connect(MONGO_URL)
     .then(() => console.log('MongoDB connected!'))
     .catch(err => console.error('MongoDB connection error:', err));
 
-// Accounts schema (existing one)
+// Accounts schema
 const schema1 = new mongoose.Schema({
     fullname: String,
     username: String,
@@ -38,7 +35,7 @@ const schema1 = new mongoose.Schema({
     SOT: String,
 });
 
-// New schema for storing results like a dictionary
+// Results schema
 const resultSchema = new mongoose.Schema({
     username: { type: String, required: true },
     results: [
@@ -54,10 +51,8 @@ const resultSchema = new mongoose.Schema({
 const model1 = mongoose.model("accounts", schema1);
 const ResultModel = mongoose.model("results", resultSchema);
 
-// Middleware
+// Serve static frontend (if needed)
 app.use(express.static('./src'));
-app.use(express.json());
-app.use(express.urlencoded({ extended: false }));
 
 // Routes
 app.post('/', async (req, res) => {
@@ -85,7 +80,6 @@ app.post('/registration.html', async (req, res) => {
     res.redirect('/index.html');
 });
 
-// Forgot Password
 app.post('/forgot-password', async (req, res) => {
     const { ID, newPassword } = req.body;
 
@@ -103,7 +97,7 @@ app.post('/forgot-password', async (req, res) => {
     }
 });
 
-// API Routes
+// API: fetch accounts
 app.get('/api/accounts', async (req, res) => {
     try {
         const users = await model1.find({}, 'fullname');
@@ -114,6 +108,7 @@ app.get('/api/accounts', async (req, res) => {
     }
 });
 
+// API: save result
 app.post("/api/save_result", async (req, res) => {
     const { username, language, score, time } = req.body;
     try {
@@ -137,6 +132,7 @@ app.post("/api/save_result", async (req, res) => {
     }
 });
 
+// API: leaderboard
 app.get("/api/leaderboard/:language", async (req, res) => {
     const { language } = req.params;
     try {
@@ -162,6 +158,7 @@ app.get("/api/leaderboard/:language", async (req, res) => {
     }
 });
 
+// API: overall scores
 app.get("/api/overall-scores", async (req, res) => {
     try {
         const results = await ResultModel.find().lean();
