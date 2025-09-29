@@ -54,7 +54,7 @@ const ResultModel = mongoose.model("results", resultSchema);
 // Serve static frontend (if needed)
 app.use(express.static('./src'));
 
-// Routes
+// Routes// LOGIN
 app.post('/', async (req, res) => {
     const { username, password } = req.body;
 
@@ -69,13 +69,22 @@ app.post('/', async (req, res) => {
                 fullname: user.fullname
             });
         } else {
-            return res.status(401).json({ success: false, message: "Invalid username or password" });
+            // 🔹 Before you had redirects or HTML responses
+            // 🔹 Now always return JSON
+            return res.status(401).json({
+                success: false,
+                message: "Invalid username or password"
+            });
         }
     } catch (err) {
         console.error("Login error:", err);
-        return res.status(500).json({ success: false, message: "Server error" });
+        return res.status(500).json({
+            success: false,
+            message: "Server error, please try again later"
+        });
     }
 });
+
 
 
 // REGISTRATION
