@@ -63,8 +63,11 @@ app.post('/', async (req, res) => {
 
         if (user) {
             console.log("Login successful:", user.username);
-            // Instead of redirect:
-            return res.json({ success: true, username: user.username });
+            return res.json({
+                success: true,
+                username: user.username,
+                fullname: user.fullname
+            });
         } else {
             return res.status(401).json({ success: false, message: "Invalid username or password" });
         }
@@ -73,6 +76,7 @@ app.post('/', async (req, res) => {
         return res.status(500).json({ success: false, message: "Server error" });
     }
 });
+
 
 // REGISTRATION
 app.post('/registration.html', async (req, res) => {
